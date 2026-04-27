@@ -290,10 +290,10 @@
                         total_price: total,
                         number_of_passengers: this.numPassengers.value,
                         number_of_luggage: this.numLuggage.value,
-                        first_trip_distance: mainDistance,
-                        first_trip_charge: mainPrice,
-                        second_trip_distance: returnDistance,
-                        second_trip_charge: returnPrice,
+                        main_distance_km: mainDistance,
+                        main_price: mainPrice,
+                        return_distance_km: returnDistance,
+                        return_price: returnPrice,
                         addons: addons,
                         pickup_location: document.querySelector("#pickupLocation")?.value || "",
                         dropoff_location: document.querySelector("#dropoffLocation")?.value || "",
@@ -369,24 +369,37 @@
                             doc.text("Invoice", pageWidth / 2, currentY, { align: "center" });
                             currentY += 6; 
 
+                            function formatDateTime(datetimeStr) {
+                                if (!datetimeStr) return "";
+                                // Split date and time
+                                const [date, time] = datetimeStr.split("T");
+                                return `${date} - ${time}`;
+                            }
+
                             // === Table ===
                             const tableColumn = ["Description", "Value"];
                             const tableRows = Object.keys(formData)
                                 .filter(k => k !== "vehicle_id" && formData[k])
                                 .map(k => {
                                     let v = formData[k];
+
                                     if (k === "addons" && Array.isArray(v)) {
                                         v = v.map(a => `${a.addon_name} (x${a.quantity})`).join(", ");
                                     }
-                                    if (["price", "total_price", "first_trip_charge", "second_trip_charge"].includes(k) && v) {
+
+                                    if (["price", "total_price", "main_price", "return_price"].includes(k) && v) {
                                         v = `$ ${parseFloat(v).toFixed(2)}`;
                                     }
-                                    if (["price", "first_trip_distance", "second_trip_distance"].includes(k) && v) {
-                                        v = `${parseFloat(v).toFixed(2)} km`;
+
+                                    // Format travel and return datetime
+                                    if (k === "travel_datetime" || k === "return_datetime") {
+                                        v = formatDateTime(v);
                                     }
+
                                     const label = k.replace(/_/g, " ").replace(/\\b\\w/g, c => c.toUpperCase());
                                     return [label, v || ""];
                                 });
+
 
                             doc.autoTable({
                                 head: [tableColumn],
@@ -529,7 +542,7 @@
     'createdby' => 1,
     'createdon' => 1763092038,
     'editedby' => 1,
-    'editedon' => 1763641373,
+    'editedon' => 1763642308,
     'deleted' => 0,
     'deletedon' => 0,
     'deletedby' => 0,
@@ -652,14 +665,6 @@
                                         <p class="mb-0 text-white">Private Express</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Bussiness</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private MPV</p>
                                     </div>
@@ -670,6 +675,26 @@
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private Mini Bus</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Business</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Premium</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
@@ -978,10 +1003,10 @@
                         total_price: total,
                         number_of_passengers: this.numPassengers.value,
                         number_of_luggage: this.numLuggage.value,
-                        first_trip_distance: mainDistance,
-                        first_trip_charge: mainPrice,
-                        second_trip_distance: returnDistance,
-                        second_trip_charge: returnPrice,
+                        main_distance_km: mainDistance,
+                        main_price: mainPrice,
+                        return_distance_km: returnDistance,
+                        return_price: returnPrice,
                         addons: addons,
                         pickup_location: document.querySelector("#pickupLocation")?.value || "",
                         dropoff_location: document.querySelector("#dropoffLocation")?.value || "",
@@ -1057,24 +1082,37 @@
                             doc.text("Invoice", pageWidth / 2, currentY, { align: "center" });
                             currentY += 6; 
 
+                            function formatDateTime(datetimeStr) {
+                                if (!datetimeStr) return "";
+                                // Split date and time
+                                const [date, time] = datetimeStr.split("T");
+                                return `${date} - ${time}`;
+                            }
+
                             // === Table ===
                             const tableColumn = ["Description", "Value"];
                             const tableRows = Object.keys(formData)
                                 .filter(k => k !== "vehicle_id" && formData[k])
                                 .map(k => {
                                     let v = formData[k];
+
                                     if (k === "addons" && Array.isArray(v)) {
                                         v = v.map(a => `${a.addon_name} (x${a.quantity})`).join(", ");
                                     }
-                                    if (["price", "total_price", "first_trip_charge", "second_trip_charge"].includes(k) && v) {
+
+                                    if (["price", "total_price", "main_price", "return_price"].includes(k) && v) {
                                         v = `$ ${parseFloat(v).toFixed(2)}`;
                                     }
-                                    if (["price", "first_trip_distance", "second_trip_distance"].includes(k) && v) {
-                                        v = `${parseFloat(v).toFixed(2)} km`;
+
+                                    // Format travel and return datetime
+                                    if (k === "travel_datetime" || k === "return_datetime") {
+                                        v = formatDateTime(v);
                                     }
+
                                     const label = k.replace(/_/g, " ").replace(/\\b\\w/g, c => c.toUpperCase());
                                     return [label, v || ""];
                                 });
+
 
                             doc.autoTable({
                                 head: [tableColumn],
@@ -1534,14 +1572,6 @@
                                         <p class="mb-0 text-white">Private Express</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Bussiness</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private MPV</p>
                                     </div>
@@ -1552,6 +1582,26 @@
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private Mini Bus</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Business</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Premium</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
@@ -1985,14 +2035,6 @@
                                         <p class="mb-0 text-white">Private Express</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Bussiness</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private MPV</p>
                                     </div>
@@ -2003,6 +2045,26 @@
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private Mini Bus</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Business</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Premium</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
@@ -2099,14 +2161,6 @@
                                         <p class="mb-0 text-white">Private Express</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Bussiness</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private MPV</p>
                                     </div>
@@ -2117,6 +2171,26 @@
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
                                         <p class="mb-0 text-white">Private Mini Bus</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Business</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Premium</p>
+                                    </div>
+                                    <div class="fleet-item text-center">
+                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
