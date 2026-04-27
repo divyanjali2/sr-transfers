@@ -1,2 +1,2 @@
 <?php
-return '/Filesystem/assets/img';
+return '/Filesystem/core/cache';

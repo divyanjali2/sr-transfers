@@ -232,13 +232,6 @@
                 // Form submit handler
                 document.getElementById("bookingForm").addEventListener("submit", async function(ev) {
                     ev.preventDefault();
-                    const submitBtn = this.querySelector(\'button[type="submit"]\');
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.innerText = "Submitting...";
-                        submitBtn.style.backgroundColor = "#6c757d"; 
-                    }
-
                     if (
                         !document.querySelector("#pickupLocation")?.value.trim() ||
                         !document.querySelector("#dropoffLocation")?.value.trim() ||
@@ -290,6 +283,7 @@
                         total_price: total,
                         number_of_passengers: this.numPassengers.value,
                         number_of_luggage: this.numLuggage.value,
+                        price_per_km: pricePerKm,
                         main_distance_km: mainDistance,
                         main_price: mainPrice,
                         return_distance_km: returnDistance,
@@ -302,6 +296,8 @@
                         travel_datetime: document.querySelector("#date")?.value || "",
                         return_datetime: document.querySelector("#returnDate")?.value || "",   
                     };
+
+                    console.log("Booking form data being submitted:", formData);
 
                     try {
                         const response = await fetch("assets/includes/save_booking.php", {
@@ -323,176 +319,92 @@
                         };
 
                         if (result.success) {
-                            const bookingNumber = result.booking_number;
+                                const bookingNumber = result.booking_number;
 
                             showToast("✅ Booking saved successfully!");
 
                             const { jsPDF } = window.jspdf;
-                            const doc = new jsPDF({ format: "a5", unit: "pt" });
+                            const doc = new jsPDF({ format: "a4", unit: "pt" });
 
                             const pageWidth = doc.internal.pageSize.getWidth();
-                            const marginX = 25;
-                            let currentY = 15; 
+                            const pageHeight = doc.internal.pageSize.getHeight();
 
                             // === Header ===
-                            const imgUrl = "assets/img/logo-pdf.png";
-                            doc.addImage(imgUrl, "PNG", pageWidth / 2 - 35, currentY, 70, 35);
-                            currentY += 38; 
+                            const marginX = 25;
 
-                            doc.setDrawColor(0, 0, 128);
+                            const imgUrl = "assets/img/logo.png";
+                            doc.addImage(imgUrl, "PNG", pageWidth / 2 - 35, 20, 70, 35);
+
+                            doc.setDrawColor(200, 0, 0);
                             doc.setLineWidth(1);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 12; 
+                            doc.line(marginX, 65, pageWidth - marginX, 65);
 
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(11);
-                            doc.text("SR Transfers, Sri Lanka", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 12;
+                            doc.setFont("helvetica", "bold");
+                            doc.setFontSize(12);
+                            doc.setTextColor(0, 0, 0);
+                            doc.text("SR Transfers, Sri Lanka", pageWidth / 2, 80, { align: "center" });
 
-                            doc.setFont("cambria", "normal");
-                            doc.setFontSize(8);
-                            doc.text("No. 37/15, Negombo Road, Seeduwa, Sri Lanka", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 12;
-                            doc.text("Phone: +94 76 798 9878 | transfers@srilankarentacar.com", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 12;
-                            doc.text(`Invoice Number: ${bookingNumber}`, pageWidth / 2, currentY, { align: "center" });
-                            currentY += 10;
+                            doc.setFont("helvetica", "normal");
+                            doc.setFontSize(9);
+                            doc.text("No. 37/15, Negombo Road, Seeduwa, Sri Lanka", pageWidth / 2, 95, { align: "center" });
+                            doc.text("Phone: +94 77 778 6729 | info@srilankarentacar.lk", pageWidth / 2, 110, { align: "center" });
+                            doc.text(`Invoice Number: ${bookingNumber}`, pageWidth / 2, 126, { align: "center" });
 
-                            doc.setDrawColor(0, 0, 128);
+                            doc.setDrawColor(0, 0, 0);
                             doc.setLineWidth(0.8);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 12; 
+                            doc.line(marginX, 130, pageWidth - marginX, 130);
 
-                            // === Invoice title ===
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(13);
-                            doc.text("Invoice", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 6; 
+                            doc.setFont("helvetica", "bold");
+                            doc.setFontSize(14);
+                            doc.setTextColor(0, 0, 0); 
+                            doc.text("Invoice", pageWidth / 2, 145, { align: "center" }); 
 
-                            function formatDateTime(datetimeStr) {
-                                if (!datetimeStr) return "";
-                                // Split date and time
-                                const [date, time] = datetimeStr.split("T");
-                                return `${date} - ${time}`;
-                            }
-
-                            // === Table ===
                             const tableColumn = ["Description", "Value"];
                             const tableRows = Object.keys(formData)
-                                .filter(k => k !== "vehicle_id" && formData[k])
-                                .map(k => {
-                                    let v = formData[k];
-
-                                    if (k === "addons" && Array.isArray(v)) {
-                                        v = v.map(a => `${a.addon_name} (x${a.quantity})`).join(", ");
-                                    }
-
-                                    if (["price", "total_price", "main_price", "return_price"].includes(k) && v) {
-                                        v = `$ ${parseFloat(v).toFixed(2)}`;
-                                    }
-
-                                    // Format travel and return datetime
-                                    if (k === "travel_datetime" || k === "return_datetime") {
-                                        v = formatDateTime(v);
-                                    }
-
-                                    const label = k.replace(/_/g, " ").replace(/\\b\\w/g, c => c.toUpperCase());
-                                    return [label, v || ""];
-                                });
-
+                            .filter(k => k !== "vehicle_id")
+                            .map(k => {
+                                let v = formData[k];
+                                if (k === "addons" && Array.isArray(v)) {
+                                v = v.map(a => `${a.addon_name} (x${a.quantity})`).join(", ");
+                                }
+                                if (k === "price" && v) v = `$ ${parseFloat(v).toFixed(2)}`;
+                                const label = k.replace(/_/g, " ").replace(/\\b\\w/g, c => c.toUpperCase());
+                                return [label, v || ""];
+                            });
 
                             doc.autoTable({
-                                head: [tableColumn],
-                                body: tableRows,
-                                startY: currentY,
-                                theme: "grid",
-
-                                styles: { fontSize: 8, cellPadding: 2, font: "cambria",  textColor: [0, 0, 0] },
-                                headStyles: { fillColor: [10, 105, 168], textColor: 255, halign: "center", fontStyle: "bold", font: "cambria" },
-                                columnStyles: {
-                                    0: { cellWidth: 100 },
-                                    1: { cellWidth: pageWidth - 100 - 2 * marginX }
-                                },
-                                margin: { left: marginX, right: marginX },
-                                tableLineWidth: 0.5
+                            head: [tableColumn],
+                            body: tableRows,
+                            startY: 155,
+                            theme: "grid",
+                            styles: { fontSize: 10, cellPadding: 4, textColor: 0 },
+                            headStyles: { fillColor: [194, 0, 0], textColor: 255, halign: "center", fontStyle: "bold" },
+                            columnStyles: {
+                                0: { cellWidth: 120 },
+                                1: { cellWidth: pageWidth - 120 - 2 * marginX }
+                            },
+                            margin: { left: marginX, right: marginX }
                             });
 
-                            let tableEndY = doc.lastAutoTable.finalY + 20;
-                            currentY = tableEndY;
+                            const tableEndY = doc.lastAutoTable.finalY + 10;
 
-                            const maxWidth = pageWidth - 2 * marginX;
-
-                            // =========================
-                            // SECTION TITLE
-                            // =========================
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(10);
-                            doc.setTextColor(0, 0, 0);
-                            doc.text("TERMS & CONDITIONS", marginX, currentY);
-                            currentY += 10;
-
-                            // underline
-                            doc.setDrawColor(0, 0, 0);
-                            doc.setLineWidth(0.6);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 12;
-
-                            doc.setFont("cambria", "normal");
-                            doc.setFontSize(9);
-
-                            function bullet(text) {
-                                const bulletPoint = "• ";
-                                const wrapped = doc.splitTextToSize(text, maxWidth - 10);
-
-                                // red bullet
-                                doc.setTextColor(220, 0, 0);
-                                doc.text(bulletPoint, marginX, currentY);
-
-                                // black text
-                                doc.setTextColor(0, 0, 0);
-                                doc.text(wrapped, marginX + 10, currentY);
-
-                                currentY += wrapped.length * 11 + 6;
-                            }
-
-                            bullet("Complimentary Waiting Time: First hour of waiting is free of charge. Thereafter, a waiting fee of $15 per hour applies.");
-                            bullet("Airport Meet & Greet: One of our Airport Representatives will be at the arrival hall (in front of the Information Center) holding a signboard with your name near Exit Gate SL.");
-                            bullet("Contact Information: Please contact our airport representative at +94 76 669 9877. They will hand you over to the driver.");
-
-                            currentY += 8;
-                            doc.setDrawColor(0, 0, 0);
-                            doc.setLineWidth(0.6);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 18;
-
-                            // =========================
-                            // TOTAL CHARGE
-                            // =========================
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(10);
-                            doc.setTextColor(0, 0, 0);
-                            doc.text("TOTAL CHARGE : ", marginX, currentY);
-
+                            doc.setFont("helvetica", "bold");
+                            doc.setFontSize(11);
                             doc.setTextColor(200, 0, 0);
-                            doc.text(`$ ${parseFloat(formData.total_price || 0).toFixed(2)}`, pageWidth - marginX, currentY, {
-                                align: "right"
-                            });
-
-                            currentY += 20;
-
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(9);
-                            doc.setTextColor(3, 26, 56);
-                            // doc.text("This serves as your official booking confirmation.", marginX, currentY);
-
-                            currentY += 20;
-
-                            // === Footer ===
-                            doc.setFont("cambria", "bold");
+                            doc.text(`Total Charge: $${parseFloat(formData.total_price || 0).toFixed(2)}`, marginX, tableEndY + 15);
                             doc.setFontSize(9);
                             doc.setTextColor(0, 0, 0);
-                            doc.text("Thank you for booking with SR Transfers!", pageWidth / 2, doc.internal.pageSize.getHeight() - 20, { align: "center" });
+                            doc.text("**Please note: A waiting charge of $15 per hour will apply in addition to the total.", marginX, tableEndY + 30);
 
+                            doc.setFontSize(9);
+                            doc.setTextColor(0, 102, 0);
+                            doc.text("• Please note: This serves as your official booking confirmation.", marginX, tableEndY + 55);
+
+                            doc.setFontSize(10);
+                            doc.setTextColor(0, 0, 0);
+                            doc.text("Thank you for booking with SR Transfers!", pageWidth / 2, pageHeight - 25, { align: "center" });
+
+                            // === Save PDF ===
                             doc.save(`${formData.customer_name}_invoice.pdf`);
                             const pdfBlob = doc.output("blob");
                             const formDataPdf = new FormData();
@@ -503,8 +415,9 @@
                                 method: "POST",
                                 body: formDataPdf
                             });
+
                             this.reset();
-                            setTimeout(() => location.reload(), 1000);
+                            setTimeout(() => location.reload(), 2000);
                         } else {
                             showToast("❌ Error: " + result.message, false);
                         }
@@ -516,14 +429,9 @@
                             toast.innerText = msg;
                             toast.style.backgroundColor = success ? "#28a745" : "#dc3545"; 
                             toast.className = "show";
-                            setTimeout(() => toast.className = toast.className.replace("show",""), 1000);
+                            setTimeout(() => toast.className = toast.className.replace("show",""), 3000);
                         };
                         showToast("⚠️ Something went wrong while submitting the booking.", false);
-                    }  finally {
-                        if (submitBtn) {
-                            submitBtn.disabled = false;
-                            submitBtn.innerText = "Submit Booking";
-                        }
                     }
                 });
             });
@@ -542,7 +450,7 @@
     'createdby' => 1,
     'createdon' => 1763092038,
     'editedby' => 1,
-    'editedon' => 1763642308,
+    'editedon' => 1763356966,
     'deleted' => 0,
     'deletedon' => 0,
     'deletedby' => 0,
@@ -612,30 +520,31 @@
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -654,7 +563,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.php?id=1">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -662,43 +570,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -707,6 +599,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=3">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=6">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=5">CONTACT US</a></li>
                     </ul>
@@ -945,13 +838,6 @@
                 // Form submit handler
                 document.getElementById("bookingForm").addEventListener("submit", async function(ev) {
                     ev.preventDefault();
-                    const submitBtn = this.querySelector(\'button[type="submit"]\');
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.innerText = "Submitting...";
-                        submitBtn.style.backgroundColor = "#6c757d"; 
-                    }
-
                     if (
                         !document.querySelector("#pickupLocation")?.value.trim() ||
                         !document.querySelector("#dropoffLocation")?.value.trim() ||
@@ -1003,6 +889,7 @@
                         total_price: total,
                         number_of_passengers: this.numPassengers.value,
                         number_of_luggage: this.numLuggage.value,
+                        price_per_km: pricePerKm,
                         main_distance_km: mainDistance,
                         main_price: mainPrice,
                         return_distance_km: returnDistance,
@@ -1015,6 +902,8 @@
                         travel_datetime: document.querySelector("#date")?.value || "",
                         return_datetime: document.querySelector("#returnDate")?.value || "",   
                     };
+
+                    console.log("Booking form data being submitted:", formData);
 
                     try {
                         const response = await fetch("assets/includes/save_booking.php", {
@@ -1036,176 +925,92 @@
                         };
 
                         if (result.success) {
-                            const bookingNumber = result.booking_number;
+                                const bookingNumber = result.booking_number;
 
                             showToast("✅ Booking saved successfully!");
 
                             const { jsPDF } = window.jspdf;
-                            const doc = new jsPDF({ format: "a5", unit: "pt" });
+                            const doc = new jsPDF({ format: "a4", unit: "pt" });
 
                             const pageWidth = doc.internal.pageSize.getWidth();
-                            const marginX = 25;
-                            let currentY = 15; 
+                            const pageHeight = doc.internal.pageSize.getHeight();
 
                             // === Header ===
-                            const imgUrl = "assets/img/logo-pdf.png";
-                            doc.addImage(imgUrl, "PNG", pageWidth / 2 - 35, currentY, 70, 35);
-                            currentY += 38; 
+                            const marginX = 25;
 
-                            doc.setDrawColor(0, 0, 128);
+                            const imgUrl = "assets/img/logo.png";
+                            doc.addImage(imgUrl, "PNG", pageWidth / 2 - 35, 20, 70, 35);
+
+                            doc.setDrawColor(200, 0, 0);
                             doc.setLineWidth(1);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 12; 
+                            doc.line(marginX, 65, pageWidth - marginX, 65);
 
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(11);
-                            doc.text("SR Transfers, Sri Lanka", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 12;
+                            doc.setFont("helvetica", "bold");
+                            doc.setFontSize(12);
+                            doc.setTextColor(0, 0, 0);
+                            doc.text("SR Transfers, Sri Lanka", pageWidth / 2, 80, { align: "center" });
 
-                            doc.setFont("cambria", "normal");
-                            doc.setFontSize(8);
-                            doc.text("No. 37/15, Negombo Road, Seeduwa, Sri Lanka", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 12;
-                            doc.text("Phone: +94 76 798 9878 | transfers@srilankarentacar.com", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 12;
-                            doc.text(`Invoice Number: ${bookingNumber}`, pageWidth / 2, currentY, { align: "center" });
-                            currentY += 10;
+                            doc.setFont("helvetica", "normal");
+                            doc.setFontSize(9);
+                            doc.text("No. 37/15, Negombo Road, Seeduwa, Sri Lanka", pageWidth / 2, 95, { align: "center" });
+                            doc.text("Phone: +94 77 778 6729 | info@srilankarentacar.lk", pageWidth / 2, 110, { align: "center" });
+                            doc.text(`Invoice Number: ${bookingNumber}`, pageWidth / 2, 126, { align: "center" });
 
-                            doc.setDrawColor(0, 0, 128);
+                            doc.setDrawColor(0, 0, 0);
                             doc.setLineWidth(0.8);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 12; 
+                            doc.line(marginX, 130, pageWidth - marginX, 130);
 
-                            // === Invoice title ===
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(13);
-                            doc.text("Invoice", pageWidth / 2, currentY, { align: "center" });
-                            currentY += 6; 
+                            doc.setFont("helvetica", "bold");
+                            doc.setFontSize(14);
+                            doc.setTextColor(0, 0, 0); 
+                            doc.text("Invoice", pageWidth / 2, 145, { align: "center" }); 
 
-                            function formatDateTime(datetimeStr) {
-                                if (!datetimeStr) return "";
-                                // Split date and time
-                                const [date, time] = datetimeStr.split("T");
-                                return `${date} - ${time}`;
-                            }
-
-                            // === Table ===
                             const tableColumn = ["Description", "Value"];
                             const tableRows = Object.keys(formData)
-                                .filter(k => k !== "vehicle_id" && formData[k])
-                                .map(k => {
-                                    let v = formData[k];
-
-                                    if (k === "addons" && Array.isArray(v)) {
-                                        v = v.map(a => `${a.addon_name} (x${a.quantity})`).join(", ");
-                                    }
-
-                                    if (["price", "total_price", "main_price", "return_price"].includes(k) && v) {
-                                        v = `$ ${parseFloat(v).toFixed(2)}`;
-                                    }
-
-                                    // Format travel and return datetime
-                                    if (k === "travel_datetime" || k === "return_datetime") {
-                                        v = formatDateTime(v);
-                                    }
-
-                                    const label = k.replace(/_/g, " ").replace(/\\b\\w/g, c => c.toUpperCase());
-                                    return [label, v || ""];
-                                });
-
+                            .filter(k => k !== "vehicle_id")
+                            .map(k => {
+                                let v = formData[k];
+                                if (k === "addons" && Array.isArray(v)) {
+                                v = v.map(a => `${a.addon_name} (x${a.quantity})`).join(", ");
+                                }
+                                if (k === "price" && v) v = `$ ${parseFloat(v).toFixed(2)}`;
+                                const label = k.replace(/_/g, " ").replace(/\\b\\w/g, c => c.toUpperCase());
+                                return [label, v || ""];
+                            });
 
                             doc.autoTable({
-                                head: [tableColumn],
-                                body: tableRows,
-                                startY: currentY,
-                                theme: "grid",
-
-                                styles: { fontSize: 8, cellPadding: 2, font: "cambria",  textColor: [0, 0, 0] },
-                                headStyles: { fillColor: [10, 105, 168], textColor: 255, halign: "center", fontStyle: "bold", font: "cambria" },
-                                columnStyles: {
-                                    0: { cellWidth: 100 },
-                                    1: { cellWidth: pageWidth - 100 - 2 * marginX }
-                                },
-                                margin: { left: marginX, right: marginX },
-                                tableLineWidth: 0.5
+                            head: [tableColumn],
+                            body: tableRows,
+                            startY: 155,
+                            theme: "grid",
+                            styles: { fontSize: 10, cellPadding: 4, textColor: 0 },
+                            headStyles: { fillColor: [194, 0, 0], textColor: 255, halign: "center", fontStyle: "bold" },
+                            columnStyles: {
+                                0: { cellWidth: 120 },
+                                1: { cellWidth: pageWidth - 120 - 2 * marginX }
+                            },
+                            margin: { left: marginX, right: marginX }
                             });
 
-                            let tableEndY = doc.lastAutoTable.finalY + 20;
-                            currentY = tableEndY;
+                            const tableEndY = doc.lastAutoTable.finalY + 10;
 
-                            const maxWidth = pageWidth - 2 * marginX;
-
-                            // =========================
-                            // SECTION TITLE
-                            // =========================
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(10);
-                            doc.setTextColor(0, 0, 0);
-                            doc.text("TERMS & CONDITIONS", marginX, currentY);
-                            currentY += 10;
-
-                            // underline
-                            doc.setDrawColor(0, 0, 0);
-                            doc.setLineWidth(0.6);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 12;
-
-                            doc.setFont("cambria", "normal");
-                            doc.setFontSize(9);
-
-                            function bullet(text) {
-                                const bulletPoint = "• ";
-                                const wrapped = doc.splitTextToSize(text, maxWidth - 10);
-
-                                // red bullet
-                                doc.setTextColor(220, 0, 0);
-                                doc.text(bulletPoint, marginX, currentY);
-
-                                // black text
-                                doc.setTextColor(0, 0, 0);
-                                doc.text(wrapped, marginX + 10, currentY);
-
-                                currentY += wrapped.length * 11 + 6;
-                            }
-
-                            bullet("Complimentary Waiting Time: First hour of waiting is free of charge. Thereafter, a waiting fee of $15 per hour applies.");
-                            bullet("Airport Meet & Greet: One of our Airport Representatives will be at the arrival hall (in front of the Information Center) holding a signboard with your name near Exit Gate SL.");
-                            bullet("Contact Information: Please contact our airport representative at +94 76 669 9877. They will hand you over to the driver.");
-
-                            currentY += 8;
-                            doc.setDrawColor(0, 0, 0);
-                            doc.setLineWidth(0.6);
-                            doc.line(marginX, currentY, pageWidth - marginX, currentY);
-                            currentY += 18;
-
-                            // =========================
-                            // TOTAL CHARGE
-                            // =========================
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(10);
-                            doc.setTextColor(0, 0, 0);
-                            doc.text("TOTAL CHARGE : ", marginX, currentY);
-
+                            doc.setFont("helvetica", "bold");
+                            doc.setFontSize(11);
                             doc.setTextColor(200, 0, 0);
-                            doc.text(`$ ${parseFloat(formData.total_price || 0).toFixed(2)}`, pageWidth - marginX, currentY, {
-                                align: "right"
-                            });
-
-                            currentY += 20;
-
-                            doc.setFont("cambria", "bold");
-                            doc.setFontSize(9);
-                            doc.setTextColor(3, 26, 56);
-                            // doc.text("This serves as your official booking confirmation.", marginX, currentY);
-
-                            currentY += 20;
-
-                            // === Footer ===
-                            doc.setFont("cambria", "bold");
+                            doc.text(`Total Charge: $${parseFloat(formData.total_price || 0).toFixed(2)}`, marginX, tableEndY + 15);
                             doc.setFontSize(9);
                             doc.setTextColor(0, 0, 0);
-                            doc.text("Thank you for booking with SR Transfers!", pageWidth / 2, doc.internal.pageSize.getHeight() - 20, { align: "center" });
+                            doc.text("**Please note: A waiting charge of $15 per hour will apply in addition to the total.", marginX, tableEndY + 30);
 
+                            doc.setFontSize(9);
+                            doc.setTextColor(0, 102, 0);
+                            doc.text("• Please note: This serves as your official booking confirmation.", marginX, tableEndY + 55);
+
+                            doc.setFontSize(10);
+                            doc.setTextColor(0, 0, 0);
+                            doc.text("Thank you for booking with SR Transfers!", pageWidth / 2, pageHeight - 25, { align: "center" });
+
+                            // === Save PDF ===
                             doc.save(`${formData.customer_name}_invoice.pdf`);
                             const pdfBlob = doc.output("blob");
                             const formDataPdf = new FormData();
@@ -1216,8 +1021,9 @@
                                 method: "POST",
                                 body: formDataPdf
                             });
+
                             this.reset();
-                            setTimeout(() => location.reload(), 1000);
+                            setTimeout(() => location.reload(), 2000);
                         } else {
                             showToast("❌ Error: " + result.message, false);
                         }
@@ -1229,14 +1035,9 @@
                             toast.innerText = msg;
                             toast.style.backgroundColor = success ? "#28a745" : "#dc3545"; 
                             toast.className = "show";
-                            setTimeout(() => toast.className = toast.className.replace("show",""), 1000);
+                            setTimeout(() => toast.className = toast.className.replace("show",""), 3000);
                         };
                         showToast("⚠️ Something went wrong while submitting the booking.", false);
-                    }  finally {
-                        if (submitBtn) {
-                            submitBtn.disabled = false;
-                            submitBtn.innerText = "Submit Booking";
-                        }
                     }
                 });
             });
@@ -1247,70 +1048,8 @@
 </body>
 </html>
 
-<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -1349,7 +1088,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -1368,9 +1107,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -1381,68 +1120,10 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
     '_isForward' => false,
   ),
   'contentType' => 
@@ -1510,39 +1191,40 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>',
     '[[~1]]' => 'index.php?id=1',
-    '[[~2]]' => 'index.php?id=2',
     '[[~7]]' => 'index.php?id=7',
     '[[~3]]' => 'index.php?id=3',
+    '[[~2]]' => 'index.php?id=2',
     '[[~6]]' => 'index.php?id=6',
     '[[~5]]' => 'index.php?id=5',
     '[[$navbar?]]' => '<header class="header">
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -1561,7 +1243,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.php?id=1">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -1569,43 +1250,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -1614,6 +1279,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=3">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=6">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=5">CONTACT US</a></li>
                     </ul>
@@ -1635,70 +1301,8 @@
 </script>
 
 ',
-    '[[$footer?]]' => '<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+    '[[$footer?]]' => '  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -1737,7 +1341,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -1756,9 +1360,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -1769,68 +1373,10 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
   ),
   'sourceCache' => 
   array (
@@ -1982,30 +1528,31 @@
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -2024,7 +1571,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="[[~1]]">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -2032,43 +1578,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -2077,6 +1607,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="[[~3]]">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~6]]">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~5]]">CONTACT US</a></li>
                     </ul>
@@ -2108,30 +1639,31 @@
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -2150,7 +1682,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="[[~1]]">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -2158,43 +1689,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -2203,6 +1718,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="[[~3]]">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~6]]">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~5]]">CONTACT US</a></li>
                     </ul>
@@ -2252,70 +1768,8 @@
           'editor_type' => 0,
           'category' => 0,
           'cache_type' => 0,
-          'snippet' => '<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+          'snippet' => '  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -2354,7 +1808,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -2373,9 +1827,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -2386,138 +1840,18 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
           'locked' => false,
           'properties' => 
           array (
           ),
           'static' => false,
           'static_file' => '',
-          'content' => '<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+          'content' => '  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -2556,7 +1890,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -2575,9 +1909,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -2588,68 +1922,10 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
         ),
         'policies' => 
         array (
@@ -3354,8 +2630,8 @@ try {
 
             let html = `🚗 Main Trip: <strong>${mainDistance.toFixed(1)} km</strong> • ${mainDuration}`;
             if (roundtripCheck.checked && returnDistance > 0) {
-                html += `<br>🔁 <span style="color: green;"><strong>Return Trip: ${returnDistance.toFixed(1)} km • ${returnDuration}</strong></span>`;
-                html += `<br>📏 <span style="color: red;">Total Distance: <strong>${(mainDistance + returnDistance).toFixed(1)} km</strong></span>`;
+                html += `<br>🔁 Return Trip: <strong>${returnDistance.toFixed(1)} km</strong> • ${returnDuration}`;
+                html += `<br>📏 Total Distance: <strong>${(mainDistance + returnDistance).toFixed(1)} km</strong>`;
             }
             distanceDisplay.innerHTML = html;
             updateTotalPrice();
@@ -3708,8 +2984,8 @@ try {
 
             let html = `🚗 Main Trip: <strong>${mainDistance.toFixed(1)} km</strong> • ${mainDuration}`;
             if (roundtripCheck.checked && returnDistance > 0) {
-                html += `<br>🔁 <span style="color: green;"><strong>Return Trip: ${returnDistance.toFixed(1)} km • ${returnDuration}</strong></span>`;
-                html += `<br>📏 <span style="color: red;">Total Distance: <strong>${(mainDistance + returnDistance).toFixed(1)} km</strong></span>`;
+                html += `<br>🔁 Return Trip: <strong>${returnDistance.toFixed(1)} km</strong> • ${returnDuration}`;
+                html += `<br>📏 Total Distance: <strong>${(mainDistance + returnDistance).toFixed(1)} km</strong>`;
             }
             distanceDisplay.innerHTML = html;
             updateTotalPrice();

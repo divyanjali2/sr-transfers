@@ -278,8 +278,8 @@ try {
 
             let html = `🚗 Main Trip: <strong>${mainDistance.toFixed(1)} km</strong> • ${mainDuration}`;
             if (roundtripCheck.checked && returnDistance > 0) {
-                html += `<br>🔁 <span style="color: green;"><strong>Return Trip: ${returnDistance.toFixed(1)} km • ${returnDuration}</strong></span>`;
-                html += `<br>📏 <span style="color: red;">Total Distance: <strong>${(mainDistance + returnDistance).toFixed(1)} km</strong></span>`;
+                html += `<br>🔁 Return Trip: <strong>${returnDistance.toFixed(1)} km</strong> • ${returnDuration}`;
+                html += `<br>📏 Total Distance: <strong>${(mainDistance + returnDistance).toFixed(1)} km</strong>`;
             }
             distanceDisplay.innerHTML = html;
             updateTotalPrice();

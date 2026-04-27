@@ -28,7 +28,7 @@
             <div class="hero-overlay"></div>
         </div>
 
-        <div class="container position-relative" style="bottom: 26%;">
+        <div class="container position-relative" style="bottom: 20%;">
             <div class="row">
                 <div class="col-lg-7 col-xl-5">
                     <div class="booking-form-wrapper" data-aos="fade-left" data-aos-delay="200">
@@ -115,8 +115,9 @@
                             window.initAutocomplete = initAutocomplete;
                             </script>
 
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHmbwBrk0OKY0Nhp9FrR_zn8HKLGZ54OU&libraries=places&callback=initAutocomplete" async defer></script>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChxB95b_sMqdOb6YIM0EWjgbksRSLOuns&libraries=places&callback=initAutocomplete" async defer></script>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -233,8 +234,7 @@
           <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="hero-content" data-aos="zoom-in" data-aos-delay="200">
                <div class="visual-element">
-                <img src="assets/img/flash-deal.jpg" alt="Airport Transfer Flash Deal" class="hero-image d-none d-md-block" loading="lazy">
-                <!-- <img src="assets/img/flash-deal-sm.jpg" alt="Airport Transfer Flash Deal" class="hero-image d-block d-md-none" loading="lazy"> -->
+                <img src="assets/img/flash-deal.jpg" alt="Airport Transfer Flash Deal" class="hero-image" loading="lazy">
                 <!-- <div class="image-overlay">
                   <div class="stat-item">
                     <span class="stat-number">25%</span>
@@ -394,34 +394,25 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Bussiness</div>
                     <img src="assets/img/vehicles/1.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
+                      <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                            <div class="info-item">
-                                <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                            </div>
-
-                            <div class="info-item">
-                                <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                            </div>
-
-                            <div class="info-item">
-                                <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                            </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 3</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>
-
                         <button class="vehicle-overlay-btn"
-                            data-vehicle=\'{
-                                "title":"Private Bussiness",
-                                "img":"assets/img/vehicles/1.png",
-                                "desc":"Perfect for business travelers and couples seeking premium comfort.",
-                                "features":["Leather Seats","USB Charging","Complimentary Water","Climate Control"],
-                                "capacity":"1–3 passengers"
-                                }\'>
-                            View Details
+                          data-vehicle=\'{
+                            "title":"Luxury",
+                            "img":"assets/img/vehicles/1.png",
+                            "desc":"Perfect for business travelers and couples seeking premium comfort.",
+                            "features":["Leather Seats","USB Charging","Complimentary Water","Climate Control"],
+                            "capacity":"1–3 passengers"
+                          }\'>
+                          View Details
                         </button>
-                    </div>
+                      </div>
+
                   </div>
                 </div>
               </div>
@@ -429,23 +420,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Express</div>
                     <img src="assets/img/vehicles/2.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 3</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Express",
+                          "title":"Standard",
                           "img":"assets/img/vehicles/2.png",
                           "desc":"Ideal for families and groups needing space and luxury.",
                           "features":["Premium Leather","Rear AC","Spacious Seats","All-Terrain Safety"],
@@ -461,23 +445,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Coach (45 Seater)</div>
                     <img src="assets/img/vehicles/3.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 45
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 45</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Coach (45 Seater)",
+                          "title":"Super Luxury Coach",
                           "img":"assets/img/vehicles/3.png",
                           "desc":"Perfect for corporate travel with extra luggage capacity.",
                           "features":["Conference Seating","Tinted Windows","USB Ports","Large Trunk"],
@@ -493,23 +470,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private SUV</div>
                     <img src="assets/img/vehicles/4.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 2
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 2</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private SUV",
+                          "title":"Executive",
                           "img":"assets/img/vehicles/4.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -525,151 +495,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Luxury SUV</div>
-                    <img src="assets/img/vehicles/10.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Luxury SUV",
-                          "img":"assets/img/vehicles/10.png",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"1–3 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Business</div>
-                    <img src="assets/img/vehicles/1.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Private Business",
-                          "img":"assets/img/vehicles/1.png",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"1–3 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Premium</div>
-                    <img src="assets/img/vehicles/9.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Private Premium",
-                          "img":"assets/img/vehicles/9.png",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"1–3 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Coach (35 Seater)</div>
-                    <img src="assets/img/vehicles/8.jpg" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 6 Large | 6 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 12
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Private Coach (35 Seater)",
-                          "img":"assets/img/vehicles/8.jpg",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"12 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private MPV</div>
                     <img src="assets/img/vehicles/5.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 6
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 6</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private MPV",
+                          "title":"People Carrier",
                           "img":"assets/img/vehicles/5.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -685,23 +520,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Van</div>
                     <img src="assets/img/vehicles/6.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 6
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 6</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Van",
+                          "title":"Large People Carrier",
                           "img":"assets/img/vehicles/6.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -717,23 +545,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Mini Bus</div>
                     <img src="assets/img/vehicles/7.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 12
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 12</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Mini Bus",
+                          "title":"Mini Bus",
                           "img":"assets/img/vehicles/7.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -755,69 +576,52 @@
     </section>
 
     <style>
-        .vehicle-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgb(241 241 241 / 88%);
-            color: #fff;
-            padding: 6px 15px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            opacity: 0;
-            transition: 0.3s ease-in-out;
-            z-index: 4;
-            width: 100%;
-            color: #000080;
-            text-align: center;
-        }
 
-        .gallery-img-overlay:hover .vehicle-name {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
+      /* Container for bullet-style vehicle info */
+.vehicle-info {
+  position: absolute;
+  background: rgb(0 0 0 / 45%);
+  padding: 12px 18px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  z-index: 3;
+}
 
-      .vehicle-info {
-        position: absolute;
-        background: rgb(241 241 241 / 88%);
-        padding: 12px 18px;
-        border-radius: 10px;
-        width: 100%;
-        text-align: left;
-        color: #fff;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: 0.35s ease;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-size: 14px;
-        z-index: 3;
-      }
+/* Show info panel on hover */
+.gallery-img-overlay:hover .vehicle-info {
+  opacity: 1;
+  transform: translateY(0px);
+}
 
-      .gallery-img-overlay:hover .vehicle-info {
-        opacity: 1;
-        transform: translateY(0px);
-      }
+/* Bullet item styling */
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
 
-      .info-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-weight: 500;
-        color: #010b40;
-      }
-
+      /* Image zoom on hover */
       .gallery-img-overlay:hover img {
         transform: scale(1.05);
         opacity: 1;
       }
 
+      /* Move button upward on hover */
       .gallery-img-overlay:hover .vehicle-overlay-btn {
         transform: translateY(-100px);
       }
 
+      /* Passenger count badge */
       .passenger-count, .cancellation, .suitcases {
         position: absolute;
         bottom: 0;
@@ -832,11 +636,13 @@
         transition: 0.3s ease;
       }
 
+      /* Show on hover */
       .gallery-img-overlay:hover .passenger-count, .cancellation, .suitcases {
         opacity: 1;
         transform: translateY(0px);
       }
 
+      /* Button default state */
       .vehicle-overlay-btn {
         padding: 10px 22px;
         background: #ffffff38;
@@ -853,6 +659,7 @@
         z-index: 2;
       }
 
+      /* Passenger count appears above the button */
       .vehicle-overlay {
         position: absolute;
         inset: 0;
@@ -861,7 +668,8 @@
         justify-content: end;
         align-items: center;
       }
-    </style>
+
+      </style>
 
     <div class="modal fade" id="vehicleModal" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -1046,7 +854,7 @@
     'createdby' => 1,
     'createdon' => 1762926553,
     'editedby' => 1,
-    'editedon' => 1763717428,
+    'editedon' => 1777265599,
     'deleted' => 0,
     'deletedon' => 0,
     'deletedby' => 0,
@@ -1116,30 +924,31 @@
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -1158,7 +967,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.php?id=1">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -1166,43 +974,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -1211,6 +1003,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=3">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=6">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=5">CONTACT US</a></li>
                     </ul>
@@ -1245,7 +1038,7 @@
             <div class="hero-overlay"></div>
         </div>
 
-        <div class="container position-relative" style="bottom: 26%;">
+        <div class="container position-relative" style="bottom: 20%;">
             <div class="row">
                 <div class="col-lg-7 col-xl-5">
                     <div class="booking-form-wrapper" data-aos="fade-left" data-aos-delay="200">
@@ -1332,8 +1125,9 @@
                             window.initAutocomplete = initAutocomplete;
                             </script>
 
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHmbwBrk0OKY0Nhp9FrR_zn8HKLGZ54OU&libraries=places&callback=initAutocomplete" async defer></script>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChxB95b_sMqdOb6YIM0EWjgbksRSLOuns&libraries=places&callback=initAutocomplete" async defer></script>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -1450,8 +1244,7 @@
           <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="hero-content" data-aos="zoom-in" data-aos-delay="200">
                <div class="visual-element">
-                <img src="assets/img/flash-deal.jpg" alt="Airport Transfer Flash Deal" class="hero-image d-none d-md-block" loading="lazy">
-                <!-- <img src="assets/img/flash-deal-sm.jpg" alt="Airport Transfer Flash Deal" class="hero-image d-block d-md-none" loading="lazy"> -->
+                <img src="assets/img/flash-deal.jpg" alt="Airport Transfer Flash Deal" class="hero-image" loading="lazy">
                 <!-- <div class="image-overlay">
                   <div class="stat-item">
                     <span class="stat-number">25%</span>
@@ -1611,34 +1404,25 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Bussiness</div>
                     <img src="assets/img/vehicles/1.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
+                      <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                            <div class="info-item">
-                                <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                            </div>
-
-                            <div class="info-item">
-                                <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                            </div>
-
-                            <div class="info-item">
-                                <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                            </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 3</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>
-
                         <button class="vehicle-overlay-btn"
-                            data-vehicle=\'{
-                                "title":"Private Bussiness",
-                                "img":"assets/img/vehicles/1.png",
-                                "desc":"Perfect for business travelers and couples seeking premium comfort.",
-                                "features":["Leather Seats","USB Charging","Complimentary Water","Climate Control"],
-                                "capacity":"1–3 passengers"
-                                }\'>
-                            View Details
+                          data-vehicle=\'{
+                            "title":"Luxury",
+                            "img":"assets/img/vehicles/1.png",
+                            "desc":"Perfect for business travelers and couples seeking premium comfort.",
+                            "features":["Leather Seats","USB Charging","Complimentary Water","Climate Control"],
+                            "capacity":"1–3 passengers"
+                          }\'>
+                          View Details
                         </button>
-                    </div>
+                      </div>
+
                   </div>
                 </div>
               </div>
@@ -1646,23 +1430,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Express</div>
                     <img src="assets/img/vehicles/2.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 3</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Express",
+                          "title":"Standard",
                           "img":"assets/img/vehicles/2.png",
                           "desc":"Ideal for families and groups needing space and luxury.",
                           "features":["Premium Leather","Rear AC","Spacious Seats","All-Terrain Safety"],
@@ -1678,23 +1455,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Coach (45 Seater)</div>
                     <img src="assets/img/vehicles/3.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 45
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 45</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Coach (45 Seater)",
+                          "title":"Super Luxury Coach",
                           "img":"assets/img/vehicles/3.png",
                           "desc":"Perfect for corporate travel with extra luggage capacity.",
                           "features":["Conference Seating","Tinted Windows","USB Ports","Large Trunk"],
@@ -1710,23 +1480,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private SUV</div>
                     <img src="assets/img/vehicles/4.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 2
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 2</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private SUV",
+                          "title":"Executive",
                           "img":"assets/img/vehicles/4.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -1742,151 +1505,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Luxury SUV</div>
-                    <img src="assets/img/vehicles/10.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Luxury SUV",
-                          "img":"assets/img/vehicles/10.png",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"1–3 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Business</div>
-                    <img src="assets/img/vehicles/1.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Private Business",
-                          "img":"assets/img/vehicles/1.png",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"1–3 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Premium</div>
-                    <img src="assets/img/vehicles/9.png" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 3
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Private Premium",
-                          "img":"assets/img/vehicles/9.png",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"1–3 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Coach (35 Seater)</div>
-                    <img src="assets/img/vehicles/8.jpg" class="img-fluid" alt="">
-                    <div class="vehicle-overlay">
-                        <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 6 Large | 6 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 12
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
-                        </div>                      
-                        <button class="vehicle-overlay-btn"
-                        data-vehicle=\'{
-                          "title":"Private Coach (35 Seater)",
-                          "img":"assets/img/vehicles/8.jpg",
-                          "desc":"A reliable and comfortable option for group airport transfers.",
-                          "features":["High Roof","AC","Large Seats","Smooth Ride"],
-                          "capacity":"12 passengers"
-                        }\'>
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="gallery-item">
-                  <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private MPV</div>
                     <img src="assets/img/vehicles/5.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 6
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 6</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private MPV",
+                          "title":"People Carrier",
                           "img":"assets/img/vehicles/5.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -1902,23 +1530,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Van</div>
                     <img src="assets/img/vehicles/6.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 6
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 6</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Van",
+                          "title":"Large People Carrier",
                           "img":"assets/img/vehicles/6.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -1934,23 +1555,16 @@
               <div class="swiper-slide">
                 <div class="gallery-item">
                   <div class="gallery-img gallery-img-overlay">
-                    <div class="vehicle-name">Private Mini Bus</div>
                     <img src="assets/img/vehicles/7.png" class="img-fluid" alt="">
                     <div class="vehicle-overlay">
                         <div class="vehicle-info">
-                          <div class="info-item">
-                            <i class="fa fa-suitcase" style="color:#25D366; margin-right:6px;"></i>Pax : 1 Large | 2 Medium
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-users" style="color:#25D366; margin-right:6px;"></i>Passengers : 12
-                          </div>
-                          <div class="info-item">
-                            <i class="fa fa-check-circle" style="color:#25D366; margin-right:6px;"></i>Free Cancellation
-                          </div>
+                          <div class="info-item">• Pax : 1 Large | 2 Medium</div>
+                          <div class="info-item">• Passengers : 12</div>
+                          <div class="info-item">• Free Cancellation</div>
                         </div>                      
                         <button class="vehicle-overlay-btn"
                         data-vehicle=\'{
-                          "title":"Private Mini Bus",
+                          "title":"Mini Bus",
                           "img":"assets/img/vehicles/7.png",
                           "desc":"A reliable and comfortable option for group airport transfers.",
                           "features":["High Roof","AC","Large Seats","Smooth Ride"],
@@ -1972,69 +1586,52 @@
     </section>
 
     <style>
-        .vehicle-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgb(241 241 241 / 88%);
-            color: #fff;
-            padding: 6px 15px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            opacity: 0;
-            transition: 0.3s ease-in-out;
-            z-index: 4;
-            width: 100%;
-            color: #000080;
-            text-align: center;
-        }
 
-        .gallery-img-overlay:hover .vehicle-name {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
+      /* Container for bullet-style vehicle info */
+.vehicle-info {
+  position: absolute;
+  background: rgb(0 0 0 / 45%);
+  padding: 12px 18px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  z-index: 3;
+}
 
-      .vehicle-info {
-        position: absolute;
-        background: rgb(241 241 241 / 88%);
-        padding: 12px 18px;
-        border-radius: 10px;
-        width: 100%;
-        text-align: left;
-        color: #fff;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: 0.35s ease;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-size: 14px;
-        z-index: 3;
-      }
+/* Show info panel on hover */
+.gallery-img-overlay:hover .vehicle-info {
+  opacity: 1;
+  transform: translateY(0px);
+}
 
-      .gallery-img-overlay:hover .vehicle-info {
-        opacity: 1;
-        transform: translateY(0px);
-      }
+/* Bullet item styling */
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
 
-      .info-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-weight: 500;
-        color: #010b40;
-      }
-
+      /* Image zoom on hover */
       .gallery-img-overlay:hover img {
         transform: scale(1.05);
         opacity: 1;
       }
 
+      /* Move button upward on hover */
       .gallery-img-overlay:hover .vehicle-overlay-btn {
         transform: translateY(-100px);
       }
 
+      /* Passenger count badge */
       .passenger-count, .cancellation, .suitcases {
         position: absolute;
         bottom: 0;
@@ -2049,11 +1646,13 @@
         transition: 0.3s ease;
       }
 
+      /* Show on hover */
       .gallery-img-overlay:hover .passenger-count, .cancellation, .suitcases {
         opacity: 1;
         transform: translateY(0px);
       }
 
+      /* Button default state */
       .vehicle-overlay-btn {
         padding: 10px 22px;
         background: #ffffff38;
@@ -2070,6 +1669,7 @@
         z-index: 2;
       }
 
+      /* Passenger count appears above the button */
       .vehicle-overlay {
         position: absolute;
         inset: 0;
@@ -2078,7 +1678,8 @@
         justify-content: end;
         align-items: center;
       }
-    </style>
+
+      </style>
 
     <div class="modal fade" id="vehicleModal" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -2255,70 +1856,8 @@
 
 </body>
 
-<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -2357,7 +1896,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -2376,9 +1915,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -2389,68 +1928,10 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
     '_isForward' => false,
   ),
   'contentType' => 
@@ -2518,39 +1999,40 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>',
     '[[~1]]' => 'index.php?id=1',
-    '[[~2]]' => 'index.php?id=2',
     '[[~7]]' => 'index.php?id=7',
     '[[~3]]' => 'index.php?id=3',
+    '[[~2]]' => 'index.php?id=2',
     '[[~6]]' => 'index.php?id=6',
     '[[~5]]' => 'index.php?id=5',
     '[[$navbar?]]' => '<header class="header">
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -2569,7 +2051,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.php?id=1">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -2577,43 +2058,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -2622,6 +2087,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=3">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?id=2">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=6">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.php?id=5">CONTACT US</a></li>
                     </ul>
@@ -2643,70 +2109,8 @@
 </script>
 
 ',
-    '[[$footer?]]' => '<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+    '[[$footer?]]' => '  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -2745,7 +2149,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -2764,9 +2168,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -2777,68 +2181,10 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
   ),
   'sourceCache' => 
   array (
@@ -2990,30 +2336,31 @@
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -3032,7 +2379,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="[[~1]]">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -3040,43 +2386,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -3085,6 +2415,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="[[~3]]">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~6]]">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~5]]">CONTACT US</a></li>
                     </ul>
@@ -3116,30 +2447,31 @@
     <!-- Topbar -->
     <div class="topbar text-center">
         <p class="mb-0">
-            <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
-                <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
-            </a>
-            &nbsp;|&nbsp;
-            <a href="tel:+94767989878" style="color:white; text-decoration: none;">
-                <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 76 798 9878
-            </a>
-            &nbsp;|&nbsp;
-            <a href="mailto:transfers@srilankarentacar.com" style="color:white; text-decoration: none;">
-                <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> transfers@srilankarentacar.com
-            </a>
-        </p>
+  <a href="https://maps.app.goo.gl/AKUi53HtWCemqH8DA" target="_blank" style="color:white; text-decoration: none;">
+    <i class="fa fa-map-marker" style="color:orange; margin-right:2px;"></i> SR Transfers, Seeduwa | Sri Lanka
+  </a>
+  &nbsp;|&nbsp;
+  <a href="tel:+94777786729" style="color:white; text-decoration: none;">
+    <i class="fa fa-phone" style="color:orange; margin-right:2px;"></i> +94 77 778 6729
+  </a>
+  &nbsp;|&nbsp;
+  <a href="mailto:info@srilankarentacar.lk" style="color:white; text-decoration: none;">
+    <i class="fa fa-envelope" style="color:orange; margin-right:2px;"></i> info@srilankarentacar.lk
+  </a>
+</p>
+
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <!-- Default Logo -->
-                <img src="assets/img/logo.png" class="logo-default" alt="Logo">
+<a class="navbar-brand" href="index.html">
+    <!-- Default Logo -->
+    <img src="assets/img/logo.png" class="logo-default" alt="Logo">
 
-                <!-- Scrolled Logo -->
-                <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
-            </a>
+    <!-- Scrolled Logo -->
+    <img src="assets/img/logo-hover.png" class="logo-scrolled" alt="Scrolled Logo">
+</a>
 
 
             <!-- Offcanvas Toggle -->
@@ -3158,7 +2490,6 @@
                 <div class="offcanvas-body mobile-scrollable">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="[[~1]]">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">FLEET</a>
                             <div class="dropdown-menu fleet-menu p-3 bg-transparent border-0">
@@ -3166,43 +2497,27 @@
                                     <!-- Fleet Items -->
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/1.png" alt="Standard Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Express</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private MPV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Van</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Mini Bus</p>
+                                        <p class="mb-0 text-white">Standard Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/6.png" alt="Executive Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private SUV</p>
-                                    </div>
-                                    <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/10.png" alt="Luxury SUV" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Luxury SUV</p>
+                                        <p class="mb-0 text-white">Executive Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
                                         <img src="assets/img/navbar/3.png" alt="Luxury Cars" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Business</p>
+                                        <p class="mb-0 text-white">Luxury Cars</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/9.png" alt="Private Premium" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Premium</p>
+                                        <img src="assets/img/navbar/2.png" alt="People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/8.png" alt="Private Coach (35 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (35 Seater)</p>
+                                        <img src="assets/img/navbar/5.png" alt="Large People Carrier" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Large People Carrier</p>
                                     </div>
                                     <div class="fleet-item text-center">
-                                        <img src="assets/img/navbar/7.png" alt="Private Coach (45 Seater)" class="img-fluid mb-2">
-                                        <p class="mb-0 text-white">Private Coach (45 Seater)</p>
+                                        <img src="assets/img/navbar/4.png" alt="Luxury Coach" class="img-fluid mb-2">
+                                        <p class="mb-0 text-white">Luxury Coach</p>
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
@@ -3211,6 +2526,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="[[~3]]">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="[[~2]]">ABOUT US</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~6]]">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="[[~5]]">CONTACT US</a></li>
                     </ul>
@@ -3260,70 +2576,8 @@
           'editor_type' => 0,
           'category' => 0,
           'cache_type' => 0,
-          'snippet' => '<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+          'snippet' => '  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -3362,7 +2616,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -3381,9 +2635,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -3394,138 +2648,18 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
           'locked' => false,
           'properties' => 
           array (
           ),
           'static' => false,
           'static_file' => '',
-          'content' => '<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 20000;">
-    <div id="toast1" class="toast text-bg-dark border-0">
-        <div class="d-flex">
-            <div class="toast-body">⏱️ No extra charges for flight delays — we wait for you for FREE!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast2" class="toast text-bg-info border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">ℹ️ Free cancellation on all bookings!</div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-    <div id="toast4" class="toast text-bg-success border-0 mb-2">
-        <div class="d-flex">
-            <div class="toast-body">✈️ Airport Pickup Available 24/7 — <strong> Book Instantly!</strong></div>
-            <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast"></button>
-        </div>
-    </div>
-</div>
+          'content' => '  <footer id="footer" class="footer position-relative dark-background">
 
-
-<style>
-    .toast-container {
-        display: flex;
-        flex-direction: column-reverse; 
-        gap: 10px;
-        margin-bottom: 3%;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toastIds = ["toast1", "toast2", "toast4"];
-        let index = 0;
-
-        function showNextToast() {
-            if (index >= toastIds.length) return;
-
-            const toastEl = document.getElementById(toastIds[index]);
-            const toast = new bootstrap.Toast(toastEl, {
-                autohide: false,   
-                animation: true
-            });
-
-            toast.show();
-            index++;
-
-            setTimeout(showNextToast, 700); 
-        }
-
-        showNextToast();
-
-        setTimeout(() => {
-            toastIds.forEach(id => {
-                const el = document.getElementById(id);
-                const t = bootstrap.Toast.getOrCreateInstance(el);
-                t.hide();
-            });
-        }, 5000); 
-    });
-</script>
-
-<footer id="footer" class="footer position-relative dark-background">
     <!-- <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -3564,7 +2698,7 @@
             </p>            
             <p>
                 <strong>Email :</strong>
-                <a href="mailto:transfers@srilankarentacar.com" class="text-decoration-none"> transfers@srilankarentacar.com</a>
+                <a href="mailto:info@srilankarentacar.lk" class="text-decoration-none"> info@srilankarentacar.lk</a>
             </p>          
         </div>
         </div>
@@ -3583,9 +2717,9 @@
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <div class="social-links d-flex">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/srrentacar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/srrentacarsrilanka/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sr-rent-a-car/"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -3596,68 +2730,10 @@
       <p>© <strong class="px-1 sitename">2025 SR Transfers (Pvt) Ltd</strong> <span>All Rights Reserved</span></p>
     </div>
 
-</footer>
+  </footer>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-<!-- WhatsApp Chat Popup starts -->
-<div id="whatsapp-chat-btn" class="wa-button">
-    <i class="bi bi-whatsapp"></i>
-</div>
-
-<div id="whatsapp-chat-popup" class="wa-popup hidden">
-    <div class="wa-header">
-        <i class="bi bi-whatsapp"></i> Chat With Us
-        <span id="close-chat">×</span>
-    </div>
-
-    <div class="wa-body">
-        <p>Hello! 👋How can we assist you today with your transfer or booking?</p>
-        <textarea id="wa-chat-input" placeholder="Type your message..."></textarea>
-        <button id="wa-send-btn">Send</button>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatBtn = document.getElementById("whatsapp-chat-btn");
-        const chatPopup = document.getElementById("whatsapp-chat-popup");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("wa-send-btn");
-        const messageBox = document.getElementById("wa-chat-input");
-        const phone = "94767989878";
-
-        // Open popup
-        chatBtn.addEventListener("click", () => {
-            chatPopup.classList.remove("hidden");
-        });
-
-        // Close popup
-        closeChat.addEventListener("click", () => {
-            chatPopup.classList.add("hidden");
-        });
-
-        // Send message
-        sendBtn.addEventListener("click", () => {
-            let msg = messageBox.value.trim();
-            if (!msg) msg = "Hello! I need more information 😊";
-
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, "_blank");
-
-            messageBox.value = "";
-            chatPopup.classList.add("hidden");
-        });
-    });
-</script>
-<!-- WhatsApp Chat Popup ends -->
-
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-',
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>',
         ),
         'policies' => 
         array (
@@ -3689,7 +2765,7 @@
           'editor_type' => 0,
           'category' => 0,
           'cache_type' => 0,
-          'snippet' => '$apiKey = \'AIzaSyBl50Q8W4ZF2_EkOJ1lnRoVxO1IdjIupjM\';
+          'snippet' => '$apiKey = \'AIzaSyChxB95b_sMqdOb6YIM0EWjgbksRSLOuns\';
 $placeId = \'ChIJb-sUn7Px4joR5tfdECCYM1o\';
 $cacheFile = MODX_BASE_PATH . \'assets/cache/google_reviews_cache.json\';
 $cacheTtl = 60 * 60 * 6; // 6 hours
@@ -3758,7 +2834,7 @@ return $output;',
           'moduleguid' => '',
           'static' => false,
           'static_file' => '',
-          'content' => '$apiKey = \'AIzaSyBl50Q8W4ZF2_EkOJ1lnRoVxO1IdjIupjM\';
+          'content' => '$apiKey = \'AIzaSyChxB95b_sMqdOb6YIM0EWjgbksRSLOuns\';
 $placeId = \'ChIJb-sUn7Px4joR5tfdECCYM1o\';
 $cacheFile = MODX_BASE_PATH . \'assets/cache/google_reviews_cache.json\';
 $cacheTtl = 60 * 60 * 6; // 6 hours

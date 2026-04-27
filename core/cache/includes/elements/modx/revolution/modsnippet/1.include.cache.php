@@ -1,5 +1,5 @@
 <?php
-$apiKey = 'AIzaSyBl50Q8W4ZF2_EkOJ1lnRoVxO1IdjIupjM';
+$apiKey = 'AIzaSyChxB95b_sMqdOb6YIM0EWjgbksRSLOuns';
 $placeId = 'ChIJb-sUn7Px4joR5tfdECCYM1o';
 $cacheFile = MODX_BASE_PATH . 'assets/cache/google_reviews_cache.json';
 $cacheTtl = 60 * 60 * 6; // 6 hours
