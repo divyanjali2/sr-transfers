@@ -1,2 +1,2 @@
 <?php
-return '/Filesystem/core/cache';
+return '/Filesystem';

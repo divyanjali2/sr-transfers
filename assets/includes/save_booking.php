@@ -1,316 +1,139 @@
+<?php
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5861K2TN4V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/error.log');
 
-  gtag('config', 'G-5861K2TN4V');
-</script>
+header('Content-Type: application/json');
+ob_start();
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/breadcrumb/sr_bc_rentacar.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-end justify-content-center">
-            <div class="col-md-9 ftco-animate text-center mb-4">
-                <h1 class="mb-2 bread">Super Luxury Coach</h1>
-                <p class="breadcrumbs" style="padding-bottom: 20px;">
-                    <span class="mr-2"><a href="[[~1]]">Home <i class="ion-ios-arrow-forward"></i></a></span>
-                    <span class="mr-2"><a href="[[~4]]">Fleet <i class="ion-ios-arrow-forward"></i></a></span>
-                    <span>SUPER LUXURY COACH<i class="ion-ios-arrow-forward"></i></span>
-                </p>
-            </div>
-        </div>
-    </div>
-  </section>
-  
-  <!-- Topic Cards -->
-  <div id="cards_landscape_wrap-2"  style="padding-bottom: 50px;">
-    <div class="container">
-        <h5 class="text-fleet" style="font-size: 25px; text-align: left;">Which vehicle would you like to Drive?</h5>
-        <div class="row">
-  
-  
-  
-  
-  
-  
-  
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="card-flyer" style="height: auto; overflow: hidden;">
-                    <div class="text-box" style="height: 100%;">
-                        <!-- Exclusive Label -->
-                        <div class="exclusive-label" style="position: absolute; top: 50px; right: 15px; background-color: #06b609; color: rgb(255, 255, 255); padding: 5px 10px; font-weight: bold; border-radius: 5px;">
-                            Exclusive
-                        </div>
-                        <div class="image-box" style="position: relative; display: inline-block;">
-                            <img src="assets/images/car_booking/bus/highdecor_b.jpg" alt="" style="display: block; width: 100%; height: 200px;" />
-                            <div class="overlay-text" style="position: absolute; top: 10%; left: 58%; color: #fff7f7; font-size: 22px; text-align: center;">
-                                <!-- <div class="icon-text">
-                                    
-                                        <div class="icon-contain">
-                                  
-                                        [[!ratesModalSnippet]]
-                                    </div>
-                                </div> -->
-                                
-                               
-                                
-                            </div>
-                            <div class="overlay-text" style="position: absolute; top: 25%; left: 0%; color: white; font-size: 16px; text-align: center;">
-                                <div class="icon-text">
-                                    <i class="fas fa-snowflake iconic"></i>
-                                    <span>Front AC</span>
-                                </div>
-                                <div class="icon-text">
-                                    <i class="fas fa-users iconic"></i>
-                                    <span>04 Max</span>
-                                </div>
-                                <div class="icon-text">
-                                    <i class="fas fa-suitcase iconic"></i>
-                                    <span>04 Max</span>
-                                </div>
-                                <div class="icon-text">
-                                    <i class="fas fa-gas-pump iconic"></i>
-                                    <span>Full to Full</span>
-                                </div>
-                                <div class="icon-text">
-                                    <i class="fas fa-tachometer iconic"></i>
-                                    <span>Unlimited KM per Day</span>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div class="text-container">
-                            <h6 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 18px;">King Long </h6>
-                            <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 14px; color: green;">( Super Luxury Coach )</p>
-                            <div class="alert alert-info alert-dismissible" role="alert" style="background-color: #28a74609; color: rgb(132, 12, 12);">
-                                <strong>Info:</strong> Flexible cancellation with every booking.
-                            </div>
-                        </div>
-            
-                        <div class="container">
-                            <!-- Bootstrap Tabs -->
-                            <ul class="nav nav-tabs" id="vehicleTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Basic Info</a>
-                                </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link" id="rates-tab" data-toggle="tab" href="#rates" role="tab" aria-controls="rates" aria-selected="false">Rates</a>
-                                </li> -->
-                                <li class="nav-item">
-                                    <a class="nav-link" id="terms-tab" data-toggle="tab" href="#terms" role="tab" aria-controls="terms" aria-selected="false">Terms & Conditions</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="vehicleTabContent">
-                                <div class="tab-pane fade show" id="details" role="tabpanel" aria-labelledby="details-tab" style="padding: 15px;">
-                                    <div class="bordered-text" style="font-size: 14px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                                        At the car pickup, it is compulsory to hold a temporary Sri Lankan driver permit for self-driving.
-                                      
-                                      </div>
-                                    <!-- Content for Basic Info -->
-                                    <h4>Driver & license requirements</h4>
-                                    <div style="text-align: left;">
-                                        <p style="font-weight: 900;">When you pick the car up, you'll need:</p>
-                                        <i class="fas fa-check-circle icon"></i> Passport or national ID card<br>
-                                        <i class="fas fa-check-circle icon"></i> Driving license<br>
-                                        <i class="fas fa-check-circle icon"></i> Credit card
-                                    </div>
-                                    <hr>
-                                    <h4>Security deposit</h4>
-                                    <p style="text-align: justify;">
-                                        No security deposit will be required, as the chauffeur will be held responsible for any damage-related costs.
+include_once __DIR__ . '/../../config.php';
+include_once __DIR__ . '/../../classes/EmailSender.php';
+include_once __DIR__ . '/db_connect.php';
 
-                                    </p>
-                                    <hr>
-                                    <h4>Accepted cards</h4>
-                                    <div style="text-align: center;">
-                                        <figure style="display: inline-block; margin: 10px;">
-                                            <img src="assets/images/car_booking/master_card.png" alt="Card Type 1" style="width: 100px; height: auto;">
-                                            <figcaption>Master Card</figcaption>
-                                        </figure>
-                                        <figure style="display: inline-block; margin: 10px;">
-                                            <img src="assets/images/car_booking/visa_card.png" alt="Card Type 2" style="width: 100px; height: auto;">
-                                            <figcaption>Visa Card</figcaption>
-                                        </figure>
-                                    </div>
-                                    <hr>
-                                    <h4>Damage Excess </h4>
-                                    <p style="text-align: justify;">
-                                        The damage excess fee will be waived off as the vehicle is provided with the chauffeur driver.
+try {
+    $data = json_decode(file_get_contents("php://input"), true);
+    if (!$data) {
+        throw new Exception("Invalid input: JSON data missing or malformed.");
+    }
 
-                                    </p>
-                                    <hr>
-                                    <h4>Mileage (Unlimited)</h4>
-                                    <p style="text-align: justify;">
-                                        Your rental includes unlimited free kilometres.
-                                    </p>
-                                    <hr>
-                                    <h4>Fuel policy (Full to Full)</h4>
-                                    <p style="text-align: justify;">
-                                        Your vehicle will be supplied with a full tank of fuel. To avoid incurring fuel charges, you will need to return it with the same amount of fuel as it had when you collected it.
-                                    </p>
-                                    <hr>
-                                </div>
-                                <div class="tab-pane fade" id="rates" role="tabpanel" aria-labelledby="rates-tab">
-                                    <table class="table table-striped table-hover">
-                                        <thead class="thead-light">
-                                            <tr style="text-align: left;">
-                                                <th>Duration</th>
-                                                <th>Rate</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody style="text-align: left;">
-                                            <tr class="table-primary">
-                                                <td>01  - 03 Days</td>
-                                                <td>XX Euro</td>
-                                            </tr>
-                                            <tr class="table-secondary">
-                                                <td>04  - 06 Days</td>
-                                                <td>XX Euro</td>
-                                            </tr>
-                                            <tr class="table-success">
-                                                <td>07 Days</td>
-                                                <td>XX Euro</td>
-                                            </tr>
-                                            <tr class="table-primary">
-                                                <td>08  - 13 Days</td>
-                                                <td>XX Euro</td>
-                                            </tr>
-                                            <tr class="table-secondary">
-                                                <td>14 Days</td>
-                                                <td>XX Euro</td>
-                                            </tr>
-                                            <tr class="table-success">
-                                                <td>15 & More Days</td>
-                                                <td>XX Euro</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div style="text-align: center; font-size: 14px; color: darkred; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: left; margin-left: 20px;">
-                    <p>Price Includes:</p>
-                    <ul>
-                      <li>Daily English Speaking Driver for 12 hours</li>
-                      <li>Driver fees, meals and accommodation</li>
-                      <li>Airport assistance on arrival and departure</li>
-                      <li>All the taxes & service charges</li>
-                    </ul>
-                    <p style="text-align: center; font-size: 14px; color: rgb(17, 74, 0);">***These are Included for the Coach Prices***</p>
-                  </div>
-                                </div>
-                                <div class="tab-pane fade" id="terms" role="tabpanel" aria-labelledby="terms-tab">
-                  <div style="text-align: left; padding: 15px;">
-                                                                               
-                                       
-                    <i class="fas fa-check-circle icon"></i>Digital driving licences will not be accepted.
-                    <hr>
-                    <i class="fas fa-check-circle icon"></i>The main driver or booking holder  must be in possession of a Credit Card in their own name when picking up the car.
-                    <hr>
-                    <i class="fas fa-check-circle icon"></i>The driver must be within the age range of 21-65 years to be eligible to self drive.
-                    <hr>
-                    <i class="fas fa-check-circle icon"></i>The renter must be physically present at the car pick up and on return of the vehicle.
-                </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                      <div style="margin-bottom: 20px;">
-    <a href="[[~30]]" class="theme-btn btn-style-three btn-selection"
-       data-carcode="car_032" data-carname="Scania" data-carimage="assets/images/reg/car_032.png">
-        Select
-    </a>
+    $addonsArray = array_map(fn($a) => $a['addon_name'].' x'.$a['quantity'].' ($'.$a['total'].')', $data['addons'] ?? []);
+    $addonsString = implode(", ", $addonsArray);
 
-</div>
+    $stmt = $conn->prepare("
+        INSERT INTO bookings 
+        (
+            vehicle_id, vehicle_category, customer_name, email, phone,
+            flight_number, number_of_passengers, number_of_luggage,
+            pickup_location, dropoff_location, return_pickup_location, return_dropoff_location,
+            travel_datetime, return_datetime,
+            price_per_km, first_trip_distance, first_trip_charge,
+            second_trip_distance, second_trip_charge, total_price, addons
+        )
+        VALUES 
+        (
+            :vehicle_id, :vehicle_category, :customer_name, :email, :phone,
+            :flight_number, :number_of_passengers, :number_of_luggage,
+            :pickup, :dropoff, :return_pickup, :return_dropoff,
+            :travel_datetime, :return_datetime,
+            :price_per_km, :first_trip_distance, :first_trip_charge,
+            :second_trip_distance, :second_trip_charge, :total_price, :addons
+        )
+    ");
 
-                        
-                    </div>
-                </div>
-            </div>
-  
-  
-  
-  
-  
-  
-  
-  
-            
-  
-    </div>
-  </div>
+    $stmt->execute([
+        ':vehicle_id'       => $data['vehicle_id'] ?? null,
+        ':vehicle_category' => $data['vehicle_category'] ?? null,
+        ':customer_name'    => $data['customer_name'] ?? null,
+        ':email'            => $data['email'] ?? null,
+        ':phone'            => $data['phone'] ?? null,
+        ':flight_number'    => $data['flight_number'] ?? null,
+        ':number_of_passengers' => $data['number_of_passengers'] ?? null,
+        ':number_of_luggage'    => $data['number_of_luggage'] ?? null,
+        ':pickup'           => $data['pickup_location'] ?? null,
+        ':dropoff'          => $data['dropoff_location'] ?? null,
+        ':return_pickup'    => $data['return_pickup_location'] ?? null,
+        ':return_dropoff'   => $data['return_dropoff_location'] ?? null,
+        ':travel_datetime'  => $data['travel_datetime'] ?? null,
+        ':return_datetime'  => $data['return_datetime'] ?? null,  
+        ':price_per_km'     => $data['price_per_km'] ?? 0,
+        ':first_trip_distance' => $data['first_trip_distance'] ?? 0,
+        ':first_trip_charge'       => $data['first_trip_charge'] ?? 0,
+        ':second_trip_distance' => $data['second_trip_distance'] ?? 0,
+        ':second_trip_charge'     => $data['second_trip_charge'] ?? 0,
+        ':total_price'      => $data['total_price'] ?? 0,
+        ':addons'           => $addonsString
+    ]);
 
-  <style>
-    .modal-backdrop {
-    background-color: rgba(0, 0, 0, 0.3) !important;
+    $lastId = $conn->lastInsertId();
+    $year = date('Y');
+    $month = date('m');
+    $bookingNumber = sprintf("SR/RENT-%s/%s/%04d", $year, $month, $lastId);
+
+    $invoiceFileName = sprintf("%04d.pdf", $lastId);
+    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+
+    // Adjust this if your project folder changes
+    $projectBase = rtrim(dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))), '/\\');
+
+    $baseUrl = $scheme . '://' . $host . $projectBase . '/';
+    $invoicePath = $baseUrl . 'invoices/' . $invoiceFileName;
+
+    $update = $conn->prepare("
+        UPDATE bookings 
+        SET booking_number = :booking_number, invoice_file = :invoice_file 
+        WHERE id = :id
+    ");
+    $update->execute([
+        ':booking_number' => $bookingNumber,
+        ':invoice_file' => $invoicePath,
+        ':id' => $lastId
+    ]);
+
+    // SEND EMAIL NOTIFICATION
+    $emailSender = new EmailSender();
+
+    $adminEmail = "navodyadivyanjali2@gmail.com"; 
+
+    $emailContentAdmin = "
+        <h2>New Booking Received</h2>
+        <p><b>Booking Number:</b> $bookingNumber</p>
+        <p><b>Name:</b> {$data['customer_name']}</p>
+        <p><b>Email:</b> {$data['email']}</p>
+        <p><b>Phone:</b> {$data['phone']}</p>
+        <p><b>Pickup:</b> {$data['pickup_location']}</p>
+        <p><b>Dropoff:</b> {$data['dropoff_location']}</p>
+        <p><b>Travel Date & Time:</b> {$data['travel_datetime']}</p>
+        <p><b>Total Price:</b> $ {$data['total_price']}</p>
+        <p>Invoice link: <a href='{$invoicePath}'>$invoicePath</a></p>
+    ";
+
+    try {
+        ob_start(); 
+        error_log("Sending booking notification email to admin: $adminEmail");
+        $emailSender->sendEmail($adminEmail, "New Booking Received - $bookingNumber", $emailContentAdmin);
+
+        ob_end_clean(); 
+    } catch (Exception $e) {
+        error_log("PHPMailer Error: " . $e->getMessage());
+    }
+
+    echo json_encode([
+        'success' => true,
+        'message' => 'Booking saved successfully',
+        'booking_number' => $bookingNumber,
+        'invoice_file' => $invoicePath
+    ]);
+    exit;
+
+} catch (PDOException $e) {
+    error_log("PDO Exception: " . $e->getMessage());
+    echo json_encode(['success' => false, 'message' => 'Database error occurred.']);
+    exit;
+} catch (Exception $e) {
+    error_log("General Exception: " . $e->getMessage());
+    echo json_encode(['success' => false, 'message' => 'An unexpected error occurred.']);
+    exit;
 }
-
-.modal-backdrop.show {
-    opacity: 0.3 !important;
-}
-    </style>
-  
-  <!-- Include Bootstrap JS and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // JavaScript to handle tab collapse/expand
-    document.querySelectorAll('.nav-link').forEach(tab => {
-        tab.addEventListener('click', function() {
-            const targetId = this.getAttribute('href');
-            const targetPane = document.querySelector(targetId);
-  
-            // Toggle the collapse of the target tab pane
-            if (targetPane.classList.contains('show')) {
-                targetPane.classList.remove('show', 'active'); // Collapse if already open
-            } else {
-                document.querySelectorAll('.tab-pane').forEach(pane => {
-                    pane.classList.remove('show', 'active'); // Collapse all other tabs
-                });
-                targetPane.classList.add('show', 'active'); // Show the clicked tab
-            }
-        });
-    });
-  
-    $('.btn-selection').click(function(e){
-        let carCode = $(this).data('carcode');
-        let carName = $(this).data('carname');
-    let carImage = $(this).data('carimage');
-        // console.log('selected_car_code', carCode);
-        
-        localStorage.setItem('selected_car', carCode);
-        localStorage.setItem('selected_car_name', carName);
-    localStorage.setItem('selected_car_image', carImage);
-  
-    $('#carName').html(`<img src="${carImage}" alt="${carName}" style="width: 50px; height: auto; vertical-align: middle;"/> ${carName}`);
-    });
-  
-  
-  
-    
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch('fetch_rates.php') // Adjust the endpoint to match your PHP script
-        .then(response => response.json())
-        .then(data => {
-            const tbody = document.querySelector('#rates2 table tbody');
-            tbody.innerHTML = ''; // Clear existing rows
-  
-            data.forEach((row, index) => {
-                const tr = document.createElement('tr');
-                tr.className = index % 3 === 0 ? 'table-primary' 
-                           : index % 3 === 1 ? 'table-secondary' 
-                           : 'table-success';
-  
-                tr.innerHTML = `
-                    <td>${row.duration}</td>
-                    <td>${row.rate} Euro</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-  });
-  
-  
-  
-  </script>

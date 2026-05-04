@@ -4872,7 +4872,7 @@ section,
 }
 
 .travel-booking .booking-progress .step.completed .step-number::before {
-  content: "✓";
+  content: "âœ“";
   font-size: 16px;
 }
 
@@ -6133,7 +6133,7 @@ section,
 }
 
 .blog-details .article-wrapper .article-content .content-section .highlight-quote::before {
-  content: "“";
+  content: "â€œ";
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -7995,7 +7995,7 @@ section,
 }
 
 .terms-of-service .tos-content .content-section .disclaimer-box ul li::before {
-  content: "•";
+  content: "â€¢";
   position: absolute;
   left: 8px;
   color: var(--accent-color);
@@ -8191,7 +8191,7 @@ section,
 }
 
 .privacy .privacy-content .content-section ul li::before {
-  content: "•";
+  content: "â€¢";
   position: absolute;
   left: 8px;
   color: var(--accent-color);
@@ -8584,6 +8584,13 @@ HEADER
     }
 }
 
+@media (min-width: 992px) {
+.navbar-expand-lg .navbar-nav .dropdown-menu
+ {
+   margin-left: -400%;
+ }
+}
+
 .offcanvas {
     width: 75%;
     background-color: #696767 !important;
@@ -8645,15 +8652,14 @@ HEADER
 }
 
 .fleet-item p {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     color: white;
-    margin-top: 8px;
 }
 
 @media (min-width: 992px) {
     .fleet-container {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, auto);
         max-width: 700px;
         margin: auto;
@@ -9350,4 +9356,15 @@ TESTIMONIALS
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+}
+
+
+/* Default navbar style */
+#mainNavbar {
+    transition: all 0.3s ease;
+}
+
+/* Navbar when scrolled */
+#mainNavbar.scrolled {
+    background-color: rgb(2 39 57 / 96%) !important;
 }

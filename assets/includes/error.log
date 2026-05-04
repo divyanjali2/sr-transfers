@@ -1,44 +1,4 @@
-<?php
-$host = "localhost";
-$user = "slrcar_srimal87";
-$pass = "Srimal@456"; 
-$dbname = "slrcar_sr";
-
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-if ($conn->connect_error) {
-    die("<h2 style='color:red;'>❌ Database connection failed:</h2> " . $conn->connect_error);
-}
-
-$category = isset($_GET['car_category']) ? htmlspecialchars($_GET['car_category']) : '';
-if ($category === "") {
-    die("<p style='color:red;'>❌ No car category specified.</p>");
-}
-
-$today = date('Y-m-d');
-
-$stmt = $conn->prepare("
-    SELECT rate
-    FROM car_rental_1 
-    WHERE car_category=? AND start_date <= ? AND (end_date >= ? OR end_date IS NULL)
-    ORDER BY start_date ASC
-    LIMIT 1
-");
-$stmt->bind_param("sss", $category, $today, $today);
-$stmt->execute();
-$result = $stmt->get_result();
-
-// Only show the per day rate, in white and bold
-echo "<div style='color:white; font-weight:bold; font-family:Cambria; font-size:14px;'>";
-
-if ($result->num_rows > 0) {
-    $rateData = $result->fetch_assoc();
-    $rate = $rateData['rate'];
-    echo "Rate on $today : € $rate";
-} else {
-    echo "No rate found for this category.";
-}
-
-echo "</div>";
-
-$conn->close();
+[04-May-2026 13:15:58 Asia/Colombo] Sending booking notification email to admin: navodyadivyanjali2@gmail.com
+[2026-05-04 13:16:02] Error: Email could not be sent: SMTP Error: Could not authenticate.
+[04-May-2026 13:20:27 Asia/Colombo] Sending booking notification email to admin: navodyadivyanjali2@gmail.com
+[2026-05-04 13:20:30] Error: Email could not be sent: SMTP Error: Could not authenticate.

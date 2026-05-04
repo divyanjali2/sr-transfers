@@ -1,6 +1,6 @@
 <?php
     $host = 'localhost';
-    $dbname = 'sr-transfers-db';
+    $dbname = 'transfers1';
     $username = 'root';
     $password = '';
 

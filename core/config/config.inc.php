@@ -6,10 +6,10 @@ $database_type = 'mysql';
 $database_server = 'localhost';
 $database_connection_charset = 'utf8mb4';
 $table_prefix = 'modx_';
-$dbase = 'sr-transfers-db';
+$dbase = 'transfers1';
 $database_user = 'root';
 $database_password = '';
-$database_dsn = 'mysql:host=localhost;dbname=sr-transfers-db;charset=utf8mb4';
+$database_dsn = 'mysql:host=localhost;dbname=transfers1;charset=utf8mb4';
 $config_options = array (
 );
 $driver_options = array (
